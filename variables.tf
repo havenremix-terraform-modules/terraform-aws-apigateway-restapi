@@ -14,7 +14,16 @@ variable "create_custom_domain" {
 
 variable "resources" {
     type = map(any)
-    default = {}
+    default = {
+        "default" = {
+            path = "default"
+            method = "GET"
+            integration = ""
+            function_name = ""
+            authorization = "NONE"
+            authorization_scopes = []
+        }
+    }
 }
 
 variable "stage_name" {
@@ -32,4 +41,12 @@ variable "custom_domain_validation_method" {
 
 variable "custom_domain_path" {
     type = string
+}
+
+variable "custom_domain_certificate_arn" {
+    type = string
+}
+
+variable "cognito_authorizer_user_pool_arn" {
+    type = list(string)
 }
